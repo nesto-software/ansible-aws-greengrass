@@ -28,7 +28,6 @@
   pip:
     name: awscli
     state: latest
-    executable: /usr/local/bin/pip
   become: yes
   become_user: root
   when:
@@ -40,7 +39,6 @@
   pip:
     name: awscli
     state: latest
-    executable: /usr/local/bin/pip
   become: yes
   when:
     - ansible_os_family == "Darwin"
@@ -49,7 +47,6 @@
 - name: Install pybin
   pip:
     name: pybin
-    executable: /usr/local/bin/pip
   when:
     - ansible_os_family == "Darwin"
     - not ansible_check_mode
