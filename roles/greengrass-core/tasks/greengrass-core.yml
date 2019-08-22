@@ -53,6 +53,7 @@
 - name: install-boto3
   pip:
     name: boto3
+    executable: /usr/local/bin/pip
   when: not ansible_check_mode
 
 - name: download-greengrass
