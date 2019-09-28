@@ -17,27 +17,7 @@
     name: ggc_user
     system: yes
     state: present
-
-- name: download-cgroupfs-mount
-  get_url:
-    url: "https://raw.githubusercontent.com/tianon/cgroupfs-mount/951c38ee8d802330454bdede20d85ec1c0f8d312/cgroupfs-mount"
-    dest: /tmp/cgroupfs-mount.sh
-  register: download_cgroupfs_mount
-  retries: 5
-  delay: 5
-  until: not download_cgroupfs_mount.failed
-
-- name: perms-cgroupfs-mount
-  file:
-    path: /tmp/cgroupfs-mount.sh
-    mode: "+x"
-  when:
-    - download_cgroupfs_mount.changed
-    - not download_cgroupfs_mount.failed
-
-- name: cgroupfs-mount
-  command: bash /tmp/cgroupfs-mount.sh
-
+ 
 - name: install-pip
   package:
     name: python-pip
